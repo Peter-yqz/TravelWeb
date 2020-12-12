@@ -6,7 +6,6 @@ import About from '../components/About/About.vue'
 import Page1 from '../components/Page1/Page1.vue'
 import Page2 from '../components/Page2/Page2.vue'
 import Page3 from '../components/Page3/Page3.vue'
-import Banner from '../components/Plugins/Banner.vue'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -29,9 +28,6 @@ const router = new VueRouter({
     },{
         path:'/Page3', 
         component: Page3
-    },{
-        path: '/Banner', 
-        component: Banner
     }]
 })
 export default router;

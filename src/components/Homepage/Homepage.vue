@@ -1,20 +1,46 @@
 <template>
-    <el-container>
-        <el-header>
-            This is the title.
-        </el-header>
-        <el-main>
-            This is the main text.
-        </el-main>
-        <el-footer>
-            the footer.
-        </el-footer>
-    </el-container>
+<div class="container">
+    <h1 style="text-align: center">XXX数据统计可视化平台</h1>
+    <el-carousel :interval="4000" type="card" height="400px" width='600px'>
+    <el-carousel-item v-for="item in imagesbox" :key="item.id">
+    <img :src="item.idView" class="image">
+    </el-carousel-item>
+    </el-carousel>
+    <div>
+        <p><i class="el-icon-message"></i>is the main text.</p>
+        <p><i class="el-icon-message"></i>is the main text.</p>
+        <p> is the main text.</p>
+        <p> is the main text.</p>
+        <p> is the main text.</p>
+        <p> is the main text.</p>
+        <p> is the main text.</p>
+        <p> is the main text.</p>
+        <p> is the main text.</p>
+        <p> is the main text.</p>
+        <p> is the main text.</p>
+        <p> is the main text.</p>
+        <p> is the main text.</p>
+        <p> is the main text.</p>
+    </div>
+</div>
 </template>
-<script type="text/ecmascript-6">
+<script>
     export default {
         data(){
-            return {}
+            return {
+                imagesbox:[
+                {id:0,idView:require("../../assets/pic1.jpg")},      
+                {id:1,idView:require("../../assets/pic2.jpg")},
+                {id:2,idView:require("../../assets/pic3.jpg")}
+                ]
+            }
         }
     }
 </script>
+
+<style scoped>
+.container{
+    background-color: rgb(200, 218, 218);
+    box-sizing: border-box;
+}
+</style>
