@@ -1,39 +1,18 @@
 <template>
+<el-container>
 <div class="container">
-    <h1 style="text-align: center ;color:white ;margin-bottom:10px ;line-height:50px">XXX数据统计可视化平台</h1>
-    <el-row>
-        <el-col>
-            <el-carousel :interval="6000" indicator-position="inside" height="bannerHeight + 'px'" style="text-align:center">
-            <el-carousel-item v-for="item in imagesbox" :key="item.id" >
-            <img :src="item.idView" class="image">
-            </el-carousel-item>
-            </el-carousel>
-        </el-col>
-    </el-row>
-    <el-row style="margin-top:25px">
-        <el-col span="10">
-            <h1 class="box1">项目进展</h1>
-        </el-col>
-        <el-col span="14" >
-            <div class="block">
-            <el-timeline>
-            <el-timeline-item  v-for="(activity, index) in activities" :key="index" :timestamp="activity.timestamp">
-            {{activity.content}}
-            </el-timeline-item>
-            </el-timeline>
-            </div>
-        </el-col>
-    </el-row>
-    <el-row>
-        <p style="text-align:center"><i class="el-icon-s-opportunity">这里还不知道写点什么</i></p>
-        <p style="text-align:center"><i class="el-icon-s-opportunity">这里还不知道写点什么</i></p>
-        <p style="text-align:center"><i class="el-icon-s-opportunity">这里还不知道写点什么</i></p>
-        <p style="text-align:center"><i class="el-icon-s-opportunity">这里还不知道写点什么</i></p>
-        <p style="text-align:center"><i class="el-icon-s-opportunity">这里还不知道写点什么</i></p>
-        <p style="text-align:center"><i class="el-icon-s-opportunity">这里还不知道写点什么</i></p>
-        <p style="text-align:center"><i class="el-icon-s-opportunity">这里还不知道写点什么</i></p>
-    </el-row>
+    <p style="text-indent:2em">党的十九大报告强调“数字中国建设成为我国未来蓝图的重要组成部分,已上升为国家战略”。在以整个中国作为对象的数字地球技术体系中，通过大数据科学系统测量信息热度与热点区域旅游互动态势，能清楚预测区域旅游经济效益变化规律。
+据此，本课题结合往年数据验证区域舆情热度、信息热点与目的地旅游效益的关系，研究舆情热度、信息热点对该地区旅游效益变化程度的影响，建立舆情热度、信息热点对当地旅游业的影
+响度模型，验证信息热度和热点对当地旅游业的影响程度；通过计算机模拟实现模型可视化，实时动态测量不同舆情热度下的区域旅游情况，完成人工智能模拟动态干预下的舆情变化对当地旅
+游的预测。
+科学意义：揭示了动态数据与人工智能下的信息热度与旅游行为的互动影响机理，这是对信息
+理论和数学经济理论的进一步探索。
+应用前景：研究成果能够有效推动舆情信息与相关企事业单位的数据整合，为政府和企业利用
+舆情、信息数据提升旅游业管理和决策水平，进一步创造经济效益。
+课题的研究不仅响应“建设网络强国、数字中国、智慧社会战略部署”，也是统筹考虑数字化
+对区域旅游带来的全方位影响，从战略高度谋划数字中国的实践应用。</p>
 </div>
+</el-container>
 </template>
 
 <script>
@@ -85,6 +64,8 @@
 .container{
     background-color: white;
     box-sizing: border-box;
+    margin: 20px;
+    margin-top: 60px;
 }
 .style1{
     border-radius: 4px;
