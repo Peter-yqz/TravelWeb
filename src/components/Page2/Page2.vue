@@ -1,12 +1,14 @@
 <template>
-   <div ref="chart" style="width:100%;height:376px"></div>
+  <!-- <h1>中国大陆各省级行政区舆情热度折线图</h1> -->
+  <el-row>
+  <div ref="chart" style="width:100%;height:376px"></div>
+  </el-row>
 </template>
 <script>
 export default {
     name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   },
   mounted(){
@@ -19,13 +21,13 @@ export default {
         const myChart = this.$echarts.init(chart)
         const option = {xAxis: {
         type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: ['北京', '天津', '上海', '广东', '河北', '山西', '福建']
     },
     yAxis: {
         type: 'value'
     },
     series: [{
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        data: [1820, 932, 1901, 934, 290, 130, 320],
         type: 'line'
     }]}
         myChart.setOption(option)

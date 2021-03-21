@@ -22,6 +22,17 @@ module.exports = (options = {}) => ({
       },
       {
         test: /\.js$/,
+        loader: 'babel-loader',
+        include: [
+            resolve('src'),
+            resolve('node_modules/vue-echarts'),
+            resolve('node_modules/resize-detector'),
+            resolve('/node_modules/element-ui/src'),
+            resolve('/node_modules/element-ui/packages')
+            ]
+      },
+      {
+        test: /\.js$/,
         use: ['babel-loader'],
         exclude: /node_modules/
       },
