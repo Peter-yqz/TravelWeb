@@ -1,59 +1,35 @@
 <template>
-  <el-container>
+  <el-container class="container">
   <el-header class="mainheader" >
             <span class="demonstration" style="float:left;padding-top:5px;color:white">
-                <el-breadcrumb separator="" style="margin-top:15px !importent">
-                  <el-breadcrumb-item>
-                    <el-button type="text">
+                <!-- <el-breadcrumb separator="" style="margin-top:15px !importent">
+                  <!-- <el-breadcrumb-item>
+                    <el-button type="text" style="color:black;font-size:1.2em;">
                     国创旅游舆情大数据小组
                     </el-button>
-                  </el-breadcrumb-item>
-                  <!-- <el-breadcrumb-item>
-                    <el-dropdown trigger="click">
-                  <span class="el-dropdown-link" style="color:white">
-                    <el-button type="text" icon="el-icon-menu">
-                      项目<i class="el-icon-caret-bottom el-icon--right"></i>
-                    </el-button>
-                  </span>
-                  <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>
-                        <el-menu default-active="1" class="el-menu-vertical-demo" style="min-height:80px" @select="handleSelect">
-                            <el-menu-item index="1"><i class="el-icon-message"></i>数据可视化1</el-menu-item>
-                            <el-menu-item index="2"><i class="el-icon-menu"></i>数据可视化2</el-menu-item>                            
-                            <el-menu-item index="3"><i class="el-icon-setting"></i>数据可视化3</el-menu-item>
-                        </el-menu>
-                    </el-dropdown-item>
-                  </el-dropdown-menu>
-                </el-dropdown>
                   </el-breadcrumb-item> -->
-                  <el-breadcrumb-item style="margin-left:10px">
+                  <!-- <el-breadcrumb-item style="margin-left:1vh"> -->
                     <el-dropdown trigger="click">
-                    <el-button  class="el-dropdown-link" type="text" icon="el-icon-info">小组成员</el-button>
+                    <el-button  class="el-dropdown-link" type="text" style="color:black;font-size:1.2em;margin-left:0">国创旅游舆情大数据小组</el-button>
                     <el-dropdown-menu slot="dropdown">
-                      <h style="margin:5px">黄玎 张金毅 郭怡霏 闫秦政 杨毓婕</h>
+                      <h class="members" style="margin:5px">黄玎 张金毅 郭怡霏 闫秦政 杨毓婕</h>
                     </el-dropdown-menu>
                     </el-dropdown>
-                  </el-breadcrumb-item>
-                </el-breadcrumb>
+                  <!-- </el-breadcrumb-item>
+                </el-breadcrumb> -->
             </span>
     </el-header>
   <el-row class="tac">
-  <el-col  span="4" style="height:100%">
+  <el-col :span="4" style="height:100%;blackground:rgba:(255, 255, 255, 0.158)">
     <el-menu
       default-active="1"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
       @select="handleSelect">
-      <!-- <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;height:100%">
-      <el-radio-button :label="false"><i class="el-icon-s-unfold"></i></el-radio-button>
-      <el-radio-button :label="true"><i class="el-icon-s-fold"></i></el-radio-button>
-      </el-radio-group> -->
       <el-menu-item index="1">        
         <i class="el-icon-s-home"></i>
-        <!-- <router-link to="/Homepage"> -->
         <template#title>主页</template>
-        <!-- </router-link> -->
       </el-menu-item>
       <el-submenu index="2" default-active="3" >
         <template #title>
@@ -70,7 +46,8 @@
       </el-menu-item>
     </el-menu>
   </el-col>
-  <el-col   style="top: 80px"span="20" id="v-content" v-bind:style="{minHeight: Height+'px'}"><router-view /></el-col>
+  <el-col :span="20" style="margin-top:6vh;margin-left:27vh;min-height:91vh" id="v-content" v-bind:style="{minHeight: Height+'px'}"><router-view />
+  </el-col>
 </el-row>
   
   <el-footer>
@@ -125,9 +102,10 @@ export default {
 </script>
 
 <style>
-.el-container {
+.container {
   display: flex;
-  background-color: #FAFAFA;
+  background: linear-gradient(
+267.77deg,rgb(65, 155, 173)0%,rgb(64, 100, 185)50%,rgb(88, 46, 141)100%);
   height:100%;
   margin:0px;
   box-sizing: border-box;
@@ -137,18 +115,22 @@ export default {
     top: 0;
     width: 100%;
     z-index: 10;
-    background-color: #4749bb;
+    background-color: rgba(255, 255, 255, 0.158);
     text-align: center;
-    height: 50px !important;
+    height: 6vh !important;
 }
 .el-footer {
   background-color:#4749bb;
   color: #969EAB;
   text-align: center;
-  height: 20px !important;
+  height: 3vh !important;
+  margin-left: 27vh;
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-    top: 50px;
-    min-height: 100%;
+    top: 6vh;
+    min-height: 100vh;
+    width: 27vh;
+    position:fixed;
+    /* background: rgba(255, 255, 255, 0.158); */
   }
 </style>
