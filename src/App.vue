@@ -2,21 +2,12 @@
   <el-container class="container">
   <el-header class="mainheader" >
             <span class="demonstration" style="float:left;padding-top:5px;color:white">
-                <!-- <el-breadcrumb separator="" style="margin-top:15px !importent">
-                  <!-- <el-breadcrumb-item>
-                    <el-button type="text" style="color:black;font-size:1.2em;">
-                    国创旅游舆情大数据小组
-                    </el-button>
-                  </el-breadcrumb-item> -->
-                  <!-- <el-breadcrumb-item style="margin-left:1vh"> -->
                     <el-dropdown trigger="click">
                     <el-button  class="el-dropdown-link" type="text" style="color:black;font-size:1.2em;margin-left:0">国创旅游舆情大数据小组</el-button>
                     <el-dropdown-menu slot="dropdown">
                       <h class="members" style="margin:5px">黄玎 张金毅 郭怡霏 闫秦政 杨毓婕</h>
                     </el-dropdown-menu>
                     </el-dropdown>
-                  <!-- </el-breadcrumb-item>
-                </el-breadcrumb> -->
             </span>
     </el-header>
   <el-row class="tac">
@@ -37,8 +28,8 @@
           <span>项目实现</span>
         </template>
           <el-menu-item index="3" >数据回顾</el-menu-item>
-          <el-menu-item index="4" >数据可视化二</el-menu-item>
-          <el-menu-item index="5" >数据可视化三</el-menu-item>
+          <el-menu-item index="4" >模型展示</el-menu-item>
+          <el-menu-item index="5" >舆情地图</el-menu-item>
       </el-submenu>
       <el-menu-item index="6">
         <i class="el-icon-setting"></i>
