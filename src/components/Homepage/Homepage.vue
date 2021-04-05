@@ -1,7 +1,7 @@
 <template>
 <el-container class="second-container">
 <div>
-    <div style="color:black;line-height:150%">
+    <div style="color:black">
         <h1>南开大学国创旅游舆情大数据项目</h1>
             <h2>项目简介</h2>
                 <p>党的十九大报告强调“数字中国建设成为我国未来蓝图的重要组成部分,已上升为国家战略”。</p>
@@ -47,7 +47,7 @@
 .second-container p{
     font-size: 1.3em;
     text-indent:2em;
-    line-height:150%;
+    /* line-height:150%; */
     /* color: white; */
 }
 .el-button{
