@@ -33,7 +33,7 @@
       </el-submenu>
       <el-menu-item index="6">
         <i class="el-icon-setting"></i>
-        <template #title>导航四</template>
+        <template #title>数据测试</template>
       </el-menu-item>
     </el-menu>
   </el-col>
@@ -73,11 +73,15 @@ export default {
       break;
       case '4':
       this.$router.push('/Page2')
-      this.breadcrumbItems  = ['数据可视化二']
+      this.breadcrumbItems  = ['模型展示']
       break;
       case '5':
       this.$router.push('/Page3')
-      this.breadcrumbItems  = ['数据可视化三']
+      this.breadcrumbItems  = ['舆情地图']
+      break;
+      case '6':
+      this.$router.push('/test1')
+      this.breadcrumbItems  = ['数据测试']
       break;
       }
     },

@@ -15,7 +15,7 @@
         <el-row style="text-align:center;padding:1vh">
             <el-col :span="12">
             <router-link to="/Page1-1">
-            <el-button>不同城市游客满意度情况表（季度）</el-button>
+            <el-button>不同城市游客满意度情况表（季度）（暂未开放）</el-button>
             </router-link>
             </el-col>
             <el-col :span="12">
@@ -32,7 +32,7 @@
             </el-col>
             <el-col :span="12">
             <router-link to="/Page1-4">
-            <el-button>国内旅游基本情况统计（季度）</el-button>
+            <el-button>国内旅游基本情况统计（季度）（暂未开放）</el-button>
             </router-link>
             </el-col>
         </el-row>

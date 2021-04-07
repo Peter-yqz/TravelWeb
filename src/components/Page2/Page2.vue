@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>中国大陆各省级行政区舆情热度折线图</h1>
+  <h1>中国大陆各省级行政区舆情热度折线图（仅供功能性测试参考）</h1>
   <el-row>
   <div ref="chart" style="width:100%;height:376px"></div>
   </el-row>
