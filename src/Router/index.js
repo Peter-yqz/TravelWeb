@@ -10,7 +10,7 @@ import Page5 from '../components/Page1/Page1-2.vue'
 import Page6 from '../components/Page1/Page1-3.vue'
 import Page7 from '../components/Page1/Page1-4.vue'
 import test from '../components/test.vue'
-import test1 from '../components/test1.vue'
+import eletest from '../components/eletest.vue'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -46,12 +46,10 @@ const router = new VueRouter({
     {
         path: '/test', 
         component: test
-    },
-    {
-        path: '/test1', 
-        component: test1
+    },{
+        path: '/eletest', 
+        component: eletest
     }
-
 ]
 })
 export default router;
