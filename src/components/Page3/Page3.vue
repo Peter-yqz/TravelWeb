@@ -7,17 +7,20 @@
         @activeChange="changeDate"
       ></timeLine>
     </div>
-    <baidu-map class="map" center="郑州" :zoom="6" :scroll-wheel-zoom="true">
-      <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
-      <bml-heatmap :data="mapData" :max="1000" :radius="10"> </bml-heatmap>
-    </baidu-map>
+
+    <div class="map">
+      <!--    放地图的容器-->
+      <div id="main" ref="chart" style="width: 100vw; height: 90vh"></div>
+    </div>
   </div>
 </template>
 
 <script>
+import * as echarts from "echarts";
 import { BmlHeatmap } from "vue-baidu-map";
 import timeLine from "./timeLine.vue";
 export default {
+  name: "ChinaMap",
   components: {
     BmlHeatmap,
     timeLine,
@@ -29,6 +32,43 @@ export default {
         { lng: 118.423332, lat: 38.916532, count: 810 },
         { lng: 121.7192, lat: 31.309853, count: 999 },
         // ...此处添加更多的数据集
+      ],
+      dataList: [
+        { name: "南海诸岛", value: 0 },
+        { name: "北京", value: 54 },
+        { name: "天津", value: 13 },
+        { name: "上海", value: 40 },
+        { name: "重庆", value: 75 },
+        { name: "河北", value: 13 },
+        { name: "河南", value: 83 },
+        { name: "云南", value: 11 },
+        { name: "辽宁", value: 19 },
+        { name: "黑龙江", value: 15 },
+        { name: "湖南", value: 69 },
+        { name: "安徽", value: 60 },
+        { name: "山东", value: 39 },
+        { name: "新疆", value: 2 },
+        { name: "江苏", value: 31 },
+        { name: "浙江", value: 104 },
+        { name: "江西", value: 36 },
+        { name: "湖北", value: 1052 },
+        { name: "广西", value: 33 },
+        { name: "甘肃", value: 7 },
+        { name: "山西", value: 9 },
+        { name: "内蒙古", value: 7 },
+        { name: "陕西", value: 22 },
+        { name: "吉林", value: 4 },
+        { name: "福建", value: 18 },
+        { name: "贵州", value: 5 },
+        { name: "广东", value: 98 },
+        { name: "青海", value: 1 },
+        { name: "西藏", value: 0 },
+        { name: "四川", value: 44 },
+        { name: "宁夏", value: 4 },
+        { name: "海南", value: 22 },
+        { name: "台湾", value: 3 },
+        { name: "香港", value: 5 },
+        { name: "澳门", value: 5 },
       ],
       originalData: [],
       timeLineList: [
@@ -68,27 +108,184 @@ export default {
     };
   },
   methods: {
+    initChart() {
+      // 获取存放地图的dom元素
+      let myChart = echarts.init(this.$refs.chart);
+      // 指定图表的配置项和数据
+      let option = {
+        // 地图标题
+        title: {
+          text: "中国舆情分布图",
+          x: "center",
+        },
+        // 视觉映射组件，根据疫情数据的不同，地图显示不同的颜色
+        visualMap: {
+          type: "piecewise",
+          min: -384279382,
+          max: 52566004,
+          left: 300,
+          bottom: 40,
+          showLabel: !0,
+          text: ["高", "低"],
+          pieces: [
+            {
+              gt: 10000,
+              // label: "> 100 人",
+              color: "#7f1100",
+              symbol: "roundRect",
+            },
+            {
+              lt: 10000,
+              gt: 5000,
+              // label: "> 100 人",
+              color: "#9b0022",
+              symbol: "roundRect",
+            },
+            {
+              lt: 5000,
+              gte: 1000,
+              // lte: 1000,
+              // label: "10 - 100 人",
+              color: "#ff5428",
+              symbol: "roundRect",
+            },
+            {
+              lt: 1000,
+              gte: 1,
+              // lt: 10,
+              // label: "1 - 9 人",
+              color: "#ff8c71",
+              symbol: "roundRect",
+            },
+            {
+              lt: 1,
+              gte: -1000,
+              color: "#75c7b3",
+              symbol: "roundRect",
+            },
+            {
+              lt: -1000,
+              gte: -2000,
+              color: "#92c4dd",
+              symbol: "roundRect",
+            },
+            {
+              lt: -2000,
+              gte: -3000,
+              color: "#3681b7",
+              symbol: "roundRect",
+            },
+            {
+              lt: -3000,
+              gt: -10000,
+              color: "#1d5aa1",
+              symbol: "roundRect",
+            },
+            {
+              lt: -10000,
+              color: "#0b0a4c",
+              symbol: "roundRect",
+            },
+          ],
+          show: !0,
+        },
+        // 放上鼠标后显示的新
+        tooltip: {
+          trigger: "item",
+          formatter: function (e, t, n) {
+            if (e.value) {
+              return "地区：" + e.name + "<br/>热度：" + e.value;
+            } else {
+              return "地区：" + e.name + "<br/>暂无数据";
+            }
+          },
+          textStyle: {
+            align: "left",
+          },
+        },
+        // 设置地图数据
+        series: [
+          {
+            type: "map",
+            map: "china",
+            label: {
+              show: true,
+              color: "black",
+              fontsize: 12,
+              formatter: (res) => {
+                return res.name;
+              },
+            },
+            itemStyle: {
+              // borderColor: 'red',
+              borderWidth: 0.5,
+            },
+            // 选中时候显示内容
+            emphasis: {
+              label: {
+                color: "black",
+                fontsize: 15,
+              },
+              itemStyle: {
+                // borderColor: '#00FFFF',
+                areaColor: "#ADFF2F",
+              },
+            },
+            roam: true,
+            data: this.dataList,
+          },
+        ],
+      };
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    },
     changeAction(e) {
       this.startTime = e.startTime;
       this.endTime = e.endTime;
     },
+    start() {
+      // 将定时器名字赋值到变量中
+      this.timer = setInterval(() => {
+        // changeDate(this.)
+      }, 1000);
+    },
+    end() {
+      clearInterval(this.timer);
+      this.timer = null; // 这里最好清除一下，回归默认值
+      // 众所周知，定时器返回一个随机整数，用于表示定时器的编号，后面通过名字可以取消这个定时器的执行。
+      console.log(this.timer);
+    },
     changeDate(idx) {
       console.log("父亲改变了： ", idx);
       this.mapData = [];
+      this.dataList = [];
       let correctTime = this.originalData.filter((val) => {
         return val.date == idx;
       });
       console.log(correctTime);
       correctTime.map((val) => {
-        this.mapData.push({
-          lng: val.lng,
-          lat: val.lat,
-          count: val.num,
+        val.location = val.location.replace("省", "");
+        val.location = val.location.replace("市", "");
+        val.location = val.location.replace("壮族自治区", "");
+        val.location = val.location.replace("维吾尔自治区", "");
+        val.location = val.location.replace("回族自治区", "");
+
+        val.location = val.location.replace("自治区", "");
+
+        this.dataList.push({
+          name: val.location,
+          value: val.num,
         });
       });
+      console.log(
+        "🚀 ~ file: Page3.vue ~ line 220 ~ correctTime.map ~ this.dataList",
+        this.dataList
+      );
+      this.initChart();
     },
   },
   mounted: function () {
+    this.initChart();
     this.$axios({
       headers: { "content-Type": "application/json;charset=utf-8" },
       method: "get",
@@ -101,9 +298,9 @@ export default {
   watch: {
     originalData: function (val) {
       console.log("🚀 ~ file: Page3.vue ~ line 103 ~ val", val);
-      val.map(i => {
-        i.num = parseFloat(i.num) + 384279382
-      })
+      // val.map((i) => {
+      //   i.num = parseFloat(i.num) + 384279382;
+      // });
       let timeLable = {};
       for (let i of val) {
         // console.log(i);

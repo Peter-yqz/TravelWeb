@@ -101,7 +101,7 @@ export default {
       this.breadcrumbItems  = ['舆情地图']
       break;
       case '6':
-      this.$router.push('/test1')
+      this.$router.push('/test')
       this.breadcrumbItems  = ['数据测试']
       break;
       case '6':
