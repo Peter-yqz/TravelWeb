@@ -141,12 +141,25 @@ export default {
       right_button_disabled: true,
     };
   },
+  
+  watch: {
+    timeLineList: {
+      //深度监听，可监听到对象、数组的变化
+      handler(newV, oldV) {
+        // do something, 可使用this
+        this.$emit("activeChange", this.timeLineList[0].timestamp);
+        console.log("🚀 ~ file: timeLine.vue ~ line 151 ~ handler ~ activeChange", activeChange)
+      },
+      deep: true,
+    },
+  },
   methods: {
     changeActive(index) {
       this.timeIndex = index;
       //   console.log("悬浮选择的时间点：", this.timeIndex);
       this.$emit("activeChange", this.timeLineList[index].timestamp);
     },
+
     moveLeft() {
       if (this.point > 0) {
         this.point -= 1;

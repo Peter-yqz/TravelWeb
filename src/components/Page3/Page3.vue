@@ -7,7 +7,7 @@
         @activeChange="changeDate"
       ></timeLine>
     </div>
-    <baidu-map class="map" center="中国" :zoom="5" :scroll-wheel-zoom="true">
+    <baidu-map class="map" center="郑州" :zoom="6" :scroll-wheel-zoom="true">
       <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
       <bml-heatmap :data="mapData" :max="1000" :radius="10"> </bml-heatmap>
     </baidu-map>
@@ -100,7 +100,7 @@ export default {
   },
   watch: {
     originalData: function (val) {
-    console.log("🚀 ~ file: Page3.vue ~ line 103 ~ val", val)
+      console.log("🚀 ~ file: Page3.vue ~ line 103 ~ val", val);
       let timeLable = {};
       for (let i of val) {
         // console.log(i);

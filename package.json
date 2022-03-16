@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "rimraf dist/ && rimraf ../dist && vue-cli-service build && cp -r dist/ ../"
   },
   "dependencies": {
     "axios": "^0.21.1",
