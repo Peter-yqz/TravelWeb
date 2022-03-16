@@ -100,6 +100,7 @@ export default {
   },
   watch: {
     originalData: function (val) {
+    console.log("🚀 ~ file: Page3.vue ~ line 103 ~ val", val)
       let timeLable = {};
       for (let i of val) {
         // console.log(i);
