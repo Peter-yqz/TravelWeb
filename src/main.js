@@ -12,7 +12,7 @@ import * as echarts from 'echarts';
 import axios from 'axios'
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios //前后端分离组件
-axios.defaults.baseURL = '/api'  //关键代码
+axios.defaults.baseURL = 'http://8.131.237.67:8000/'  //关键代码
 // Vue.prototype.$echarts = echarts
 // Vue.component('chart', ECharts)
 Vue.use(ElementUI)

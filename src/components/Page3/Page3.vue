@@ -101,6 +101,9 @@ export default {
   watch: {
     originalData: function (val) {
       console.log("🚀 ~ file: Page3.vue ~ line 103 ~ val", val);
+      val.map(i => {
+        i.num = parseFloat(i.num) + 384279382
+      })
       let timeLable = {};
       for (let i of val) {
         // console.log(i);
