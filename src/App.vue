@@ -73,6 +73,8 @@
           <span>项目实现</span>
         </template>
         <el-menu-item index="3">数据回顾</el-menu-item>
+        <el-menu-item index="4.1">模型展示</el-menu-item>
+        <!-- <el-menu-item index="5">舆情地图</el-menu-item>
         <el-submenu index="4">
           <template #title>
             <i class="el-icon-menu"></i>
@@ -80,7 +82,7 @@
           </template>
           <el-menu-item index="4.1">景点收入</el-menu-item>
           <el-menu-item index="4.2">消费情况</el-menu-item>
-        </el-submenu>
+        </el-submenu> -->
         <el-menu-item index="5">舆情地图</el-menu-item>
       </el-submenu>
 
