@@ -59,21 +59,19 @@ export default {
         method: "get",
         url: this.currentModel + "/getData",
       }).then((res) => {
-        console.log(res.data.msg);
         this.originalData = res.data.msg;
         for (let i of this.originalData) {
           this.timeLable[i.location] = 1;
         }
         this.timeLineList = [];
         const t = Object.keys(this.timeLable).sort();
-        console.log(t);
+
         for (let j of t) {
           this.timeLineList.push({
             timestamp: j,
             info: j,
           });
         }
-        console.log(this.timeLineList);
       });
 
       this.$axios({
@@ -81,7 +79,6 @@ export default {
         method: "get",
         url: "map/getData",
       }).then((res) => {
-        console.log(res.data.msg);
         this.originalOpinionData = res.data.msg;
         let myTable = {};
         for (let i of this.originalOpinionData) {
@@ -92,18 +89,16 @@ export default {
           Object.keys(myTable).includes(v)
         );
         const t = intersection.sort();
-        console.log(t);
+
         for (let j of t) {
           this.timeLineList.push({
             timestamp: j,
             info: j,
           });
         }
-        console.log(this.timeLineList);
       });
     },
     changeLocation(idx) {
-      console.log("父亲改变了： ", idx);
       this.currentCity = idx;
       let correctData = this.originalData.filter((val) => {
         return val.location == idx;
@@ -139,12 +134,12 @@ export default {
           this.charData.shift();
         }
         index++;
-        if (index > 10) {
+        if (index > 20) {
           break;
         }
       }
       // this.charData.splice(0, index);
-      console.log("this.charData: ", this.charData, this.char1Data);
+
       if (chart) {
         const myChart = this.$echarts.init(chart);
         const option = {
@@ -239,7 +234,6 @@ export default {
       }
     },
     handleCommand(command) {
-      console.log("command: ", command);
       this.currentModel = command;
       this.getOriginalData();
       this.getEchartData();
