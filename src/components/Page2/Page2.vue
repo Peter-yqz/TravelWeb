@@ -1,15 +1,21 @@
 <template>
   <div>
-    <el-dropdown @command="handleCommand" class="select">
-      <el-button type="primary">
-        选择模型<i class="el-icon-arrow-down el-icon--right"></i>
-      </el-button>
-      <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item command="hotel">消费情况</el-dropdown-item>
-        <el-dropdown-item command="tour">景区收入</el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
-    <h1 class="title">{{ this.modelMap[this.currentModel] }}</h1>
+    <h2 class="eTitle">模型公式</h2>
+    <div class="equation">
+      <img class="equation-img" src="../../assets/tour.jpg" alt="公式" />
+    </div>
+    <div class="select">
+      <el-dropdown @command="handleCommand">
+        <el-button type="primary">
+          选择模型<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="hotel">消费情况</el-dropdown-item>
+          <el-dropdown-item command="tour">景区收入</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <span class="title">{{ this.modelMap[this.currentModel] }}</span>
+    </div>
     <div class="allContent">
       <timeLine
         class="topPanel"
@@ -23,10 +29,6 @@
     <!-- <el-row> -->
     <div ref="chart1" style="width: 90%; height: 40vh"></div>
     <!-- </el-row> -->
-    <h2 class="eTitle">模型公式</h2>
-    <div class="equation">
-      <img src="../../assets/tour.jpg" alt="公式" />
-    </div>
   </div>
 </template>
 <script>
@@ -249,9 +251,10 @@ export default {
 </script>
 <style>
 .select {
-  margin-top: 30px;
-  margin-bottom: 20px;
-  margin-left: 20px;
+  display: inline-flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  height: 90px;
 }
 .allContent {
   display: flex;
@@ -262,9 +265,17 @@ export default {
 .title {
   display: inline-block;
   margin-left: 30vw;
+  font-size: 22px;
+  font-weight: bold;
 }
 .equation {
-  margin-left: 10vw;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 80vw;
+}
+.equation-img {
+  width: 44%;
 }
 .eTitle {
   margin-left: 20px;
