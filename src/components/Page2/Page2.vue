@@ -10,17 +10,23 @@
       </el-dropdown-menu>
     </el-dropdown>
     <h1 class="title">{{ this.modelMap[this.currentModel] }}</h1>
-    <timeLine
-      class="topPanel"
-      :timeLineList="timeLineList"
-      @activeChange="changeLocation"
-    ></timeLine>
-    <el-row>
-      <div ref="chart" style="width: 90%; height: 40vh"></div>
-    </el-row>
-    <el-row>
-      <div ref="chart1" style="width: 90%; height: 40vh"></div>
-    </el-row>
+    <div class="allContent">
+      <timeLine
+        class="topPanel"
+        :timeLineList="timeLineList"
+        @activeChange="changeLocation"
+      ></timeLine>
+    </div>
+    <!-- <el-row> -->
+    <div ref="chart" style="width: 90%; height: 40vh"></div>
+    <!-- </el-row> -->
+    <!-- <el-row> -->
+    <div ref="chart1" style="width: 90%; height: 40vh"></div>
+    <!-- </el-row> -->
+    <h2 class="eTitle">模型公式</h2>
+    <div class="equation">
+      <img src="../../assets/tour.jpg" alt="公式" />
+    </div>
   </div>
 </template>
 <script>
@@ -247,8 +253,20 @@ export default {
   margin-bottom: 20px;
   margin-left: 20px;
 }
+.allContent {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+}
 .title {
   display: inline-block;
-  margin-left: 38vw;
+  margin-left: 30vw;
+}
+.equation {
+  margin-left: 10vw;
+}
+.eTitle {
+  margin-left: 20px;
 }
 </style>
