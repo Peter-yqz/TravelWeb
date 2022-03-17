@@ -4,6 +4,7 @@ import App from '../App.vue'
 import Homepage from '../components/Homepage/Homepage.vue'
 import Page1 from '../components/Page1/Page1.vue'
 import Page2 from '../components/Page2/Page2.vue'
+import Page21 from '../components/Page2/Page2-1.vue'
 import Page3 from '../components/Page3/Page3.vue'
 import Page4 from '../components/Page1/Page1-1.vue'
 import Page5 from '../components/Page1/Page1-2.vue'
@@ -27,6 +28,9 @@ const routes = [
 },{
     path: '/Page2', 
     component: Page2
+},{
+    path: '/Page21', 
+    component: Page21
 },{
     path:'/Page3', 
     component: Page3

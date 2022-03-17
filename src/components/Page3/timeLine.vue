@@ -195,8 +195,8 @@ export default {
 
 <style scoped>
 .container {
-  width: 80vw;
-  height: 30px;
+  width: 93%;
+  height: 40px;
   margin-left: 0px;
   padding-left: 0px;
   margin-bottom: 5px;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>中国大陆各省级行政区旅游景点收入曲线</h1>
+    <h1>中国大陆各省级行政区旅游消费曲线</h1>
     <timeLine
       class="topPanel"
       :timeLineList="timeLineList"
@@ -14,7 +14,7 @@
 <script>
 import timeLine from "../Page3/timeLine.vue";
 export default {
-  name: "hello",
+  name: "model",
   components: {
     timeLine,
   },
@@ -22,6 +22,7 @@ export default {
     return {
       charData: ["北京", "天津", "上海", "广东", "河北", "山西", "福建"],
       chartValue: [1820, 932, 1901, 934, 290, 130, 320],
+      currentCity: "北京",
       originalData: [],
       timeLineList: [],
     };
@@ -35,7 +36,7 @@ export default {
       this.$axios({
         headers: { "content-Type": "application/json;charset=utf-8" },
         method: "get",
-        url: "tour/getData",
+        url: "hotel/getData",
       }).then((res) => {
         console.log(res.data.msg);
         this.originalData = res.data.msg;
@@ -60,6 +61,8 @@ export default {
     changeLocation(idx) {
       console.log("父亲改变了： ", idx);
       this.currentCity = idx;
+      // this.mapData = [];
+      // this.dataList = [];
       let correctData = this.originalData.filter((val) => {
         return val.location == idx;
       });
@@ -69,6 +72,7 @@ export default {
         this.charData.push(val.date);
         this.chartValue.push(val.income);
       });
+      this.charData.sort()
       this.getEchartData();
     },
     getEchartData() {
