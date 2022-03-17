@@ -84,7 +84,7 @@
         <el-menu-item index="5">舆情地图</el-menu-item>
       </el-submenu>
 
-      <el-menu-item index="6">
+      <!-- <el-menu-item index="6">
         <i class="el-icon-setting"></i>
         <template #title>测试</template>
       </el-menu-item>
@@ -92,7 +92,7 @@
       <el-menu-item index="7">
         <i class="el-icon-setting"></i>
         <template #title>布局测试</template>
-      </el-menu-item>
+      </el-menu-item> -->
     </el-menu>
 
     <div class="main">
