@@ -255,6 +255,7 @@ export default {
   justify-content: center; /* 水平居中 */
   align-items: center; /* 垂直居中 */
   height: 90px;
+  margin-left: 20px;
 }
 .allContent {
   display: flex;
