@@ -16,10 +16,10 @@
       @activeChange="changeLocation"
     ></timeLine>
     <el-row>
-      <div ref="chart" style="width: 100%; height: 42vh"></div>
+      <div ref="chart" style="width: 90%; height: 40vh"></div>
     </el-row>
     <el-row>
-      <div ref="chart1" style="width: 100%; height: 42vh"></div>
+      <div ref="chart1" style="width: 90%; height: 40vh"></div>
     </el-row>
   </div>
 </template>
@@ -166,8 +166,8 @@ export default {
             nameRotate: 90,
             nameGap: 30,
             nameTextStyle: {
-              fontSize: "16px",
-              padding: [0, 0, 20, 400],
+              fontSize: "15px",
+              padding: [0, 0, 20, 100],
             },
             type: "value",
           },
@@ -211,7 +211,7 @@ export default {
             nameGap: 30,
             nameTextStyle: {
               fontSize: "16px",
-              padding: [0, 0, 60, 400],
+              padding: [0, 0, 60, 100],
             },
             type: "value",
           },
@@ -242,11 +242,8 @@ export default {
 };
 </script>
 <style>
-.topPanel {
-  width: 100vw;
-}
 .select {
-  margin-top: 60px;
+  margin-top: 30px;
   margin-bottom: 20px;
   margin-left: 20px;
 }
