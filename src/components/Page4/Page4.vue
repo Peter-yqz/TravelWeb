@@ -392,6 +392,7 @@ export default {
     },
     handleCommand(command) {
       this.currentModel = command;
+      this.argObject = {}
       this.initTitle();
       this.getOriginalData();
       this.getEchartData();
