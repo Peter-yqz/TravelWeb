@@ -64,6 +64,6 @@
   width: 80vw;
 }
 .equation-img{
-    width: 80vw;
+    width: 53vw;
 }
 </style>

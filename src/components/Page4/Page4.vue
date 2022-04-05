@@ -82,7 +82,9 @@
           @activeChange="changeArgData"
         ></my-echart>
         <div class="arg-title-container">
-          <span class="arg-title">{{argTitleTable[currentModel][currentArg]}}</span>
+          <span class="arg-title">{{
+            argTitleTable[currentModel][currentArg]
+          }}</span>
         </div>
       </div>
     </div>
@@ -181,10 +183,10 @@ export default {
           SelectArgMap: {
             RN: -0.001,
             CN: -0.005,
-            PN: -0.000,
+            PN: -0.0,
             PRN_NRN: 0.001,
             PCN_NCN: 0.005,
-            PPN_NPN: 0.000,
+            PPN_NPN: 0.0,
           },
         },
       },
@@ -209,6 +211,7 @@ export default {
       currentArg: "RN",
       argData: [],
       minDate: 10000,
+      argObject: {},
       yGDP: 0,
       yCPI: 0,
       yIP: 0,
@@ -283,15 +286,16 @@ export default {
       const chart = this.$refs.chart;
       if (chart) {
         const myChart = this.$echarts.init(chart);
+
         const myOption = {
           title: {
-            text: "因变量",
+            text: "正影响指标",
           },
           tooltip: {
             trigger: "axis",
           },
           legend: {
-            data: [this.modelMap[this.currentModel]],
+            data: ["源数据", "变化数据"],
           },
           grid: {
             left: "3%",
@@ -310,25 +314,41 @@ export default {
             data: this.charData,
           },
           yAxis: {
-            name: this.currentModel === "income" ? "单位：亿元" : "万人次",
+            name: "数量",
             nameLocation: "center",
             nameRotate: 90,
             nameGap: 30,
             nameTextStyle: {
               fontSize: "15px",
-              padding: [0, 0, 30, 100],
+              padding: [0, 0, 40, 100],
             },
             type: "value",
           },
           series: [
-            {
-              name: this.modelMap[this.currentModel],
+             {
+              name: "变化数据",
               type: "line",
-              stack: "Total",
+              // stack: "Total",
               data: this.chartValue,
+              itemStyle: {
+                normal: {
+                  lineStyle: {
+                    color: "#de6e6a",
+                  },
+                },
+              },
+              color: "#de6e6a",
             },
+            {
+              name: "源数据",
+              type: "line",
+              // stack: "Total",
+              data: this.originalChartValue,
+            },
+           
           ],
         };
+
         myChart.setOption(myOption);
       }
     },
@@ -388,33 +408,69 @@ export default {
       });
     },
     changeGDP(x, y) {
-      this.yGDP = y;
+      if (this.argObject[x]) {
+        this.argObject[x]["GDP"] = y;
+      } else {
+        this.argObject[x] = {
+          GDP: y,
+          CPI: 0,
+          IP: 0,
+          Arg: 0,
+        };
+      }
       this.totalEquation(x);
     },
     changeCPI(x, y) {
-      this.yCPI = y;
+      if (this.argObject[x]) {
+        this.argObject[x]["CPI"] = y;
+      } else {
+        this.argObject[x] = {
+          GDP: 0,
+          CPI: y,
+          IP: 0,
+          Arg: 0,
+        };
+      }
       this.totalEquation(x);
     },
     changeIP(x, y) {
-      this.yIP = y;
+      if (this.argObject[x]) {
+        this.argObject[x]["IP"] = y;
+      } else {
+        this.argObject[x] = {
+          GDP: 0,
+          CPI: 0,
+          IP: y,
+          Arg: 0,
+        };
+      }
       this.totalEquation(x);
     },
     changeArgData(x, y) {
-      this.yArg = y;
+      if (this.argObject[x]) {
+        this.argObject[x]["Arg"] = y;
+      } else {
+        this.argObject[x] = {
+          GDP: 0,
+          CPI: 0,
+          IP: 0,
+          Arg: y,
+        };
+      }
       this.totalEquation(x);
     },
     totalEquation(x) {
       this.chartValue[x] =
         this.originalChartValue[x] +
-        (this.yGDP *
+        (this.argObject[x]["GDP"] *
           this.argTable[this.currentModel]["GDPArgMap"][this.currentArg] +
-        this.yCPI *
-          this.argTable[this.currentModel]["CPIArgMap"][this.currentArg] +
-        this.yIP *
-          this.argTable[this.currentModel]["IPArgMap"][this.currentArg] +
-        this.yArg *
-          this.argTable[this.currentModel]["SelectArgMap"][this.currentArg]);
-      
+          this.argObject[x]["CPI"] *
+            this.argTable[this.currentModel]["CPIArgMap"][this.currentArg] +
+          this.argObject[x]["IP"] *
+            this.argTable[this.currentModel]["IPArgMap"][this.currentArg] +
+          this.argObject[x]["Arg"] *
+            this.argTable[this.currentModel]["SelectArgMap"][this.currentArg]);
+
       this.chartValue = this.chartValue.slice();
       this.setFirstChart();
     },
