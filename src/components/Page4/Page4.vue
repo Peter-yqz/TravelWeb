@@ -82,9 +82,10 @@
           @activeChange="changeArgData"
         ></my-echart>
         <div class="arg-title-container">
-          <span class="arg-title">{{
+          <!-- <span class="arg-title">{{
             argTitleTable[currentModel][currentArg]
-          }}</span>
+          }}</span> -->
+          <img :src="currentImg" alt="公式" />
         </div>
       </div>
     </div>
@@ -190,7 +191,7 @@ export default {
           },
         },
       },
-      argTitleTable: {
+      argImgTable: {
         income: {
           RN: "转发数每增加1个单位，国内旅游收入减少0.001个单位",
           CN: "评论数每增加1个单位，国内旅游收入减少0.005个单位	",
@@ -206,6 +207,26 @@ export default {
           PRN_NRN: "正面转发相对数每增加1个单位，国内旅游人数增加0.007个单位",
           PCN_NCN: "正面评论相对数每增加1个单位，国内旅游人数增加0.032个单位",
           PPN_NPN: "正面点赞相对数每增加1个单位，国内旅游人数增加0.002个单位",
+        },
+      },
+      currentImg: {},
+      argTitleTable: {
+        income: {
+          
+          RN: "7.png",
+          CN: "8.png",
+          PN: "9.png",
+          PRN_NRN: "10.png",
+          PCN_NCN: "11.png",
+          PPN_NPN: "12.png",
+        },
+        number: {
+          RN: "1.png",
+          CN: "2.png",
+          PN: "3.png",
+          PRN_NRN: "4.png",
+          PCN_NCN: "5.png",
+          PPN_NPN: "6.png",
         },
       },
       currentArg: "RN",
@@ -325,7 +346,7 @@ export default {
             type: "value",
           },
           series: [
-             {
+            {
               name: "变化数据",
               type: "line",
               // stack: "Total",
@@ -334,7 +355,7 @@ export default {
                 normal: {
                   lineStyle: {
                     color: "#de6e6a",
-                    type: 'dashed'
+                    type: "dashed",
                   },
                 },
               },
@@ -346,7 +367,6 @@ export default {
               // stack: "Total",
               data: this.originalChartValue,
             },
-           
           ],
         };
 
@@ -389,10 +409,13 @@ export default {
         this.argMap[this.currentArg] +
         " 回归因子: " +
         this.argTable[this.currentModel]["SelectArgMap"][this.currentArg];
+      this.currentImg = require( "../../assets/" + this.argTitleTable[this.currentModel][
+        this.currentArg
+      ]);
     },
     handleCommand(command) {
       this.currentModel = command;
-      this.argObject = {}
+      this.argObject = {};
       this.initTitle();
       this.getOriginalData();
       this.getEchartData();

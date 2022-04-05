@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div class="equation">
+    <div class="equation">
       <img class="equation-img" src="../../assets/tour.png" alt="公式" />
     </div>
     <div class="select">
@@ -13,9 +13,21 @@
           <el-dropdown-item command="income">国内旅游收入</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <span class="title">{{ this.modelMap[this.currentModel] }}</span>
+      
     </div>
+    
     <div class="allContent">
+      
+      <div class="equation">
+        <br />
+    <br />
+      <img :src="currentImg" class="equation-img" alt="公式" />
+      </div>
+      <br/>
+      <span class="title">{{ this.modelMap[this.currentModel] }}</span>
+      
+      <br />
+    <br />
       <timeLine
         class="topPanel"
         :timeLineList="timeLineList"
@@ -47,7 +59,11 @@ export default {
     return {
       charData: ["北京", "天津", "上海", "广东", "河北", "山西", "福建"],
       chartValue: [1820, 932, 1901, 934, 290, 130, 320],
-
+      currentImg: {},
+      imgMap: {
+        number: "forNumber.png",
+        income: "forIncome.png",
+      },
       originalData: [],
       timeLineList: [],
       correctData: [],
@@ -70,7 +86,7 @@ export default {
     this.getEchartData();
     this.getOriginalData();
     this.setSecondChart();
-     this.setThirdChart();
+    this.setThirdChart();
   },
   methods: {
     async getOriginalData() {
@@ -104,7 +120,7 @@ export default {
       });
       this.getEchartData();
       this.setSecondChart();
-       this.setThirdChart();
+      this.setThirdChart();
     },
     getEchartData() {
       const chart = this.$refs.chart;
@@ -119,6 +135,8 @@ export default {
           this.chartValue.push(val.DT);
         }
       });
+      this.currentImg = require("../../assets/" +
+        this.imgMap[this.currentModel]);
       this.charData.sort();
       if (chart) {
         const myChart = this.$echarts.init(chart);
@@ -399,12 +417,15 @@ export default {
   display: flex;
   align-content: center;
   justify-content: center;
-  width: 80vw;
+  width: 60vw;
 }
 .equation-img {
   width: 44%;
 }
 .eTitle {
   margin-left: 20px;
+}
+.formular-img{
+  width: 44%;
 }
 </style>
