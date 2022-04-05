@@ -334,6 +334,7 @@ export default {
                 normal: {
                   lineStyle: {
                     color: "#de6e6a",
+                    type: 'dashed'
                   },
                 },
               },
