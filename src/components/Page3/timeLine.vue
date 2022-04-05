@@ -148,7 +148,7 @@ export default {
       handler(newV, oldV) {
         // do something, 可使用this
         this.$emit("activeChange", this.timeLineList[0].timestamp);
-        console.log("🚀 ~ file: timeLine.vue ~ line 151 ~ handler ~ activeChange", activeChange)
+        
       },
       deep: true,
     },
@@ -156,7 +156,7 @@ export default {
   methods: {
     changeActive(index) {
       this.timeIndex = index;
-      //   console.log("悬浮选择的时间点：", this.timeIndex);
+      //   
       this.$emit("activeChange", this.timeLineList[index].timestamp);
     },
 
@@ -181,7 +181,7 @@ export default {
         this.timeIndex += 1;
         this.left_button_disabled = false;
         this.left_button_active = true;
-        console.log("————————————", this.timeIndex);
+        
         if (this.point_end === this.timeLineList.length - 1) {
           //如果移到最后一个时间点，设置右按钮不可点击
           this.right_button_disabled = true;

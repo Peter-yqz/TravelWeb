@@ -115,7 +115,7 @@ export default {
       let option = {
         // 地图标题
         title: {
-          text: "中国舆情分布图（鼠标点击上方选择不同时间）",
+          text: "中国评论趋势分布图（鼠标点击上方选择不同时间）",
           x: "center",
         },
         // 视觉映射组件，根据疫情数据的不同，地图显示不同的颜色
@@ -194,7 +194,7 @@ export default {
           trigger: "item",
           formatter: function (e, t, n) {
             if (e.value) {
-              return "地区：" + e.name + "<br/>热度：" + e.value;
+              return "地区：" + e.name + "<br/>正负與情的评论数：" + e.value;
             } else {
               return "地区：" + e.name + "<br/>暂无数据";
             }
@@ -243,26 +243,15 @@ export default {
       this.startTime = e.startTime;
       this.endTime = e.endTime;
     },
-    start() {
-      // 将定时器名字赋值到变量中
-      this.timer = setInterval(() => {
-        // changeDate(this.)
-      }, 1000);
-    },
-    end() {
-      clearInterval(this.timer);
-      this.timer = null; // 这里最好清除一下，回归默认值
-      // 众所周知，定时器返回一个随机整数，用于表示定时器的编号，后面通过名字可以取消这个定时器的执行。
-      console.log(this.timer);
-    },
+    
     changeDate(idx) {
-      console.log("父亲改变了： ", idx);
+      
       this.mapData = [];
       this.dataList = [];
       let correctTime = this.originalData.filter((val) => {
         return val.date == idx;
       });
-      console.log(correctTime);
+      
       correctTime.map((val) => {
         val.location = val.location.replace("省", "");
         val.location = val.location.replace("市", "");
@@ -274,7 +263,7 @@ export default {
 
         this.dataList.push({
           name: val.location,
-          value: val.num,
+          value: val.PCN_NCN,
         });
       });
       console.log(
@@ -289,34 +278,33 @@ export default {
     this.$axios({
       headers: { "content-Type": "application/json;charset=utf-8" },
       method: "get",
-      url: "map/getData",
+      url: "new/getNewData",
     }).then((res) => {
-      console.log(res);
       this.originalData = res.data.msg;
     });
   },
   watch: {
     originalData: function (val) {
-      console.log("🚀 ~ file: Page3.vue ~ line 103 ~ val", val);
+      
       // val.map((i) => {
       //   i.num = parseFloat(i.num) + 384279382;
       // });
       let timeLable = {};
       for (let i of val) {
-        // console.log(i);
+        // 
         timeLable[i.date] = "";
       }
-      console.log(timeLable);
+      
       this.timeLineList = [];
       const t = Object.keys(timeLable).sort();
-      console.log(t);
+      
       for (let j of t) {
         this.timeLineList.push({
           timestamp: j,
           info: j,
         });
       }
-      console.log(this.timeLineList);
+      
     },
   },
 };

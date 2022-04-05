@@ -8,7 +8,7 @@
               class="el-dropdown-link"
               type="text"
               style="color: black; font-size: 1.2em; margin-left: 0"
-              >国创旅游舆情大数据小组</el-button
+              >舆情大数据平台</el-button
             >
             <el-dropdown-menu slot="dropdown">
               <h class="members" style="margin: 5px"
@@ -72,29 +72,20 @@
           <i class="el-icon-menu"></i>
           <span>项目实现</span>
         </template>
-        <el-menu-item index="3">数据回顾</el-menu-item>
-        <el-menu-item index="4.1">模型展示</el-menu-item>
-        <!-- <el-menu-item index="5">舆情地图</el-menu-item>
-        <el-submenu index="4">
+       
+         <el-submenu index="3.1">
           <template #title>
-            <i class="el-icon-menu"></i>
-            <span>模型展示</span>
+            <!-- <i class="el-icon-menu"></i> -->
+            <span>数据说明</span>
           </template>
-          <el-menu-item index="4.1">景点收入</el-menu-item>
-          <el-menu-item index="4.2">消费情况</el-menu-item>
-        </el-submenu> -->
-        <el-menu-item index="5">舆情地图</el-menu-item>
+          <el-menu-item index="3">变量说明</el-menu-item>
+          <el-menu-item index="4.1">数据展示</el-menu-item>
+        </el-submenu> 
+        <el-menu-item index="5">與情热力图</el-menu-item>
+         <el-menu-item index="6">固定效应模拟</el-menu-item>
       </el-submenu>
 
-      <!-- <el-menu-item index="6">
-        <i class="el-icon-setting"></i>
-        <template #title>测试</template>
-      </el-menu-item>
-
-      <el-menu-item index="7">
-        <i class="el-icon-setting"></i>
-        <template #title>布局测试</template>
-      </el-menu-item> -->
+      
     </el-menu>
 
     <div class="main">
@@ -137,7 +128,7 @@ export default {
           this.breadcrumbItems = ["舆情地图"];
           break;
         case "6":
-          this.$router.push("/test");
+          this.$router.push("/page4");
           this.breadcrumbItems = ["数据测试"];
           break;
         case "6":
