@@ -123,6 +123,7 @@
         </div>
       </div>
     </div>
+    <el-button type="primary" @click="stopInter"> 停止播放</el-button>
   </div>
 </template>
 
@@ -139,27 +140,45 @@ export default {
       left_button_active: true,
       left_button_disabled: false,
       right_button_disabled: true,
+      timer: 0,
+      currentIdx: 0,
+      maxIdx: 1,
     };
   },
-  
+
+  mounted: function () {
+    this.timer = setInterval(() => {
+      this.$emit("activeChange", this.timeLineList[0].timestamp);
+      if (this.currentIdx > this.maxIdx) {
+        this.currentIdx = 0;
+      }
+      this.changeActive(this.currentIdx++);
+    }, 1500);
+  },
+  beforeDestroy: function () {
+    clearInterval(this.timer);
+  },
   watch: {
     timeLineList: {
       //深度监听，可监听到对象、数组的变化
       handler(newV, oldV) {
         // do something, 可使用this
+        this.maxIdx = this.timeLineList.length;
+        console.log("this.timeLineList.length: ", this.timeLineList.length);
         this.$emit("activeChange", this.timeLineList[0].timestamp);
-        
       },
       deep: true,
     },
   },
   methods: {
+    stopInter() {
+      clearInterval(this.timer);
+    },
     changeActive(index) {
       this.timeIndex = index;
-      //   
+      //
       this.$emit("activeChange", this.timeLineList[index].timestamp);
     },
-
     moveLeft() {
       if (this.point > 0) {
         this.point -= 1;
@@ -181,7 +200,7 @@ export default {
         this.timeIndex += 1;
         this.left_button_disabled = false;
         this.left_button_active = true;
-        
+
         if (this.point_end === this.timeLineList.length - 1) {
           //如果移到最后一个时间点，设置右按钮不可点击
           this.right_button_disabled = true;

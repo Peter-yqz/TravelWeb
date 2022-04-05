@@ -1,5 +1,8 @@
 <template>
   <div>
+      <div class="equation">
+      <img class="equation-img" src="../../assets/tour.png" alt="公式" />
+    </div>
     <div class="select">
       <el-dropdown @command="handleCommand">
         <el-button type="primary">

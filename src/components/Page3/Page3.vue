@@ -266,10 +266,7 @@ export default {
           value: val.PCN_NCN,
         });
       });
-      console.log(
-        "🚀 ~ file: Page3.vue ~ line 220 ~ correctTime.map ~ this.dataList",
-        this.dataList
-      );
+      
       this.initChart();
     },
   },

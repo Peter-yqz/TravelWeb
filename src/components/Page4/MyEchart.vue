@@ -15,6 +15,7 @@ export default {
     "chartSubtext",
     "chartYname",
     "chartColor",
+    "xName"
   ],
   data() {
     return {
@@ -83,8 +84,8 @@ export default {
                   "grid",
                   this.position
                 );
-                that.$emit("activeChange", that.charYdata[dataIndex][0],that.charYdata[dataIndex][1] - that.originalData[that.charYdata[dataIndex][0]][1]);
-                console.log(': ', that.charYdata[dataIndex][0],that.charYdata[dataIndex][1] - that.originalData[that.charYdata[dataIndex][0]][1]);
+                that.$emit("activeChange", that.charYdata[dataIndex][0],(that.charYdata[dataIndex][1] - that.originalData[that.charYdata[dataIndex][0]][1]));
+                console.log(': ', that.charYdata[dataIndex][0],(that.charYdata[dataIndex][1] - that.originalData[that.charYdata[dataIndex][0]][1])/that.originalData[that.charYdata[dataIndex][0]][1]);
                 
                 
                 that.dom.setOption({
@@ -128,10 +129,12 @@ export default {
         xAxis: {
           type: "category",
           axisLabel: {
+            show: true,
             formatter(value) {
               return value; // 格式时间显示方式
             },
           },
+          name: this.xName ? this.xName : "",
           axisLine: { onZero: false },
           data: this.charData,
         },

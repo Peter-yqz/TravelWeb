@@ -1,18 +1,15 @@
 <template>
   <div>
-    <div class="equation">
-      <img class="equation-img" src="../../assets/tour.jpg" alt="公式" />
-    </div>
+    <el-dropdown @command="handleCommand">
+      <el-button type="primary">
+        选择模型<i class="el-icon-arrow-down el-icon--right"></i>
+      </el-button>
+      <el-dropdown-menu slot="dropdown">
+        <el-dropdown-item command="number">旅游人数</el-dropdown-item>
+        <el-dropdown-item command="income">旅游收入</el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
     <div class="select">
-      <el-dropdown @command="handleCommand">
-        <el-button type="primary">
-          选择模型<i class="el-icon-arrow-down el-icon--right"></i>
-        </el-button>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="number">旅游人数</el-dropdown-item>
-          <el-dropdown-item command="income">旅游收入</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
       <span class="title">{{ this.modelMap[this.currentModel] }}</span>
     </div>
     <br />
@@ -71,17 +68,22 @@
             >
           </el-dropdown-menu>
         </el-dropdown>
+
         <br />
         <br />
         <my-echart
           :charData="charData"
           :charYdata="argData"
           :chartTitle="ArgTitle"
+          :xName="xName"
           chartSubtext="鼠标拖动数据变化"
           chartYname="单位:个"
           chartColor="#7d1784"
           @activeChange="changeArgData"
         ></my-echart>
+        <div class="arg-title-container">
+          <span class="arg-title">{{argTitleTable[currentModel][currentArg]}}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -179,11 +181,29 @@ export default {
           SelectArgMap: {
             RN: -0.001,
             CN: -0.005,
-            PN: -0.0001,
+            PN: -0.000,
             PRN_NRN: 0.001,
             PCN_NCN: 0.005,
-            PPN_NPN: 0.0001,
+            PPN_NPN: 0.000,
           },
+        },
+      },
+      argTitleTable: {
+        income: {
+          RN: "转发数每增加1个单位，国内旅游收入减少0.001个单位",
+          CN: "评论数每增加1个单位，国内旅游收入减少0.005个单位	",
+          PN: "点赞数对国内旅游收入产生了负向影响，但不明显	 ",
+          PRN_NRN: "正面转发相对数每增加1个单位，国内旅游收入增加0.001个单位",
+          PCN_NCN: "正面评论相对数每增加1个单位，国内旅游收入增加0.005个单位	",
+          PPN_NPN: "正面点赞相对数对国内旅游收入有正向影响，但不明显",
+        },
+        number: {
+          RN: "转发数每增加1个单位，国内旅游人数减少0.006个单位",
+          CN: "评论数每增加1个单位，对国内旅游人数减少0.029个单位",
+          PN: "点赞数每增加1个单位，国内旅游人数减少0.002个单位	",
+          PRN_NRN: "正面转发相对数每增加1个单位，国内旅游人数增加0.007个单位",
+          PCN_NCN: "正面评论相对数每增加1个单位，国内旅游人数增加0.032个单位",
+          PPN_NPN: "正面点赞相对数每增加1个单位，国内旅游人数增加0.002个单位",
         },
       },
       currentArg: "RN",
@@ -198,6 +218,7 @@ export default {
       CPITitle: "",
       IPTitle: "",
       ArgTitle: "",
+      xName: "名字",
     };
   },
   mounted() {
@@ -385,22 +406,15 @@ export default {
     totalEquation(x) {
       this.chartValue[x] =
         this.originalChartValue[x] +
-        this.yGDP *
+        (this.yGDP *
           this.argTable[this.currentModel]["GDPArgMap"][this.currentArg] +
         this.yCPI *
           this.argTable[this.currentModel]["CPIArgMap"][this.currentArg] +
         this.yIP *
           this.argTable[this.currentModel]["IPArgMap"][this.currentArg] +
         this.yArg *
-          this.argTable[this.currentModel]["SelectArgMap"][this.currentArg];
-      console.log(
-        this.originalChartValue[x] +
-          this.yGDP *
-            this.argTable[this.currentModel]["GDPArgMap"][this.currentArg],
-
-        this.argTable[this.currentModel]["GDPArgMap"][this.currentArg],
-        this.originalChartValue[x]
-      );
+          this.argTable[this.currentModel]["SelectArgMap"][this.currentArg]);
+      
       this.chartValue = this.chartValue.slice();
       this.setFirstChart();
     },
@@ -427,19 +441,14 @@ export default {
   font-size: 22px;
   font-weight: bold;
 }
-.equation {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  width: 80vw;
-}
-.equation-img {
-  width: 44%;
-}
+
 .eTitle {
   margin-left: 20px;
 }
-
+.equation-img {
+  display: block;
+  width: 80%;
+}
 .adjust-container {
   display: flex;
   flex-direction: row;
@@ -451,5 +460,16 @@ export default {
 .right-container {
   display: inline-block;
   width: 50%;
+}
+.arg-title {
+  margin-top: -50px;
+  font-size: 20px;
+}
+.arg-title-container {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 </style>
