@@ -101,7 +101,7 @@
           <!-- <span class="arg-title">{{
             argTitleTable[currentModel][currentArg]
           }}</span> -->
-          <img :src="currentImg" alt="公式" />
+          <img :src="currentImg" alt="公式" class="formular-img" />
         </div>
       </div>
     </div>
@@ -598,5 +598,8 @@ export default {
   align-content: center;
   justify-content: center;
   align-items: center;
+}
+.formular-img{
+  width: 80%;
 }
 </style>
