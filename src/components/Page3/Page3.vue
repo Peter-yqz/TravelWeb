@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="picker">
       <!-- <div style="flex: 1">选择时间：</div> -->
       <timeLine
@@ -11,7 +11,7 @@
 
     <div class="map">
       <!--    放地图的容器-->
-      <div id="main" ref="chart" style="width: 100vw; height: 90vh"></div>
+      <div id="main" ref="chart" class="map" ></div>
     </div>
   </div>
 </template>
@@ -309,9 +309,13 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.container{
+  margin: 30px;
+  /* margin-left: -100px; */
+}
 .map {
-  width: 100%;
-  height: 100%;
+  width: 80vw;
+  height: 85vh;
 }
 .picker {
   z-index: 100;

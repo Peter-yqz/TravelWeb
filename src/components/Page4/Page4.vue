@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="top-model">
       <div class="top-select">
         <el-dropdown @command="handleCommand">
@@ -517,6 +517,9 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.container {
+  margin: 30px;
+}
 .top-model {
   display: flex;
   align-content: center;
@@ -525,7 +528,7 @@ export default {
   margin-top: -50px;
 }
 .chart {
-   width: 70vw;
+  width: 70vw;
   height: 35vh;
 }
 .allContent {
@@ -547,7 +550,7 @@ export default {
 .top-select {
   position: relative;
   top: 50px;
-  left: 30px;
+  left: 0px;
 }
 .select {
   font-size: 20px;
@@ -599,7 +602,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.formular-img{
+.formular-img {
   width: 80%;
 }
 </style>

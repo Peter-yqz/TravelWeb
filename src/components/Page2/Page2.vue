@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="container">
   <div>
     <div class="top-img-container">
       <img class="first-equation" src="../../assets/tour.png" alt="公式" />
@@ -382,10 +382,15 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.container{
+  margin: 30px;
+}
 .select {
   position: relative;
+  display: inline;
   left: 50px;
   top: 80px;
+  z-index: 1000;
 }
 .allContent {
   display: flex;
@@ -423,7 +428,7 @@ export default {
   z-index: 100;
 }
 .chart{
-  width: 1200px;
+  width: 80vw;
   height: 30vh;
   margin-top: 50px;
 }

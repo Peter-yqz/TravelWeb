@@ -2,7 +2,7 @@
   <el-container class="container" direction="horizontal">
     <el-header class="mainheader" direction="vertical">
       <div>
-        <span class="demonstration">
+        <!-- <span class="demonstration">
           <el-dropdown trigger="click">
             <el-button
               class="el-dropdown-link"
@@ -16,7 +16,7 @@
               >
             </el-dropdown-menu>
           </el-dropdown>
-        </span>
+        </span> -->
       </div>
     </el-header>
     <el-menu
@@ -24,6 +24,9 @@
       class="el-menu-vertical-demo"
       @select="handleSelect"
       :collapse="isCollapse"
+      background-color="#0f1927"
+      text-color="#fff"
+      active-text-color="#ffd04b"
     >
       <el-menu-item index="10" class="show_edge" direction="horizontal">
         <div class="show_edge">
@@ -72,20 +75,18 @@
           <i class="el-icon-menu"></i>
           <span>项目实现</span>
         </template>
-       
-         <el-submenu index="3.1">
+
+        <el-submenu index="3.1">
           <template #title>
             <!-- <i class="el-icon-menu"></i> -->
             <span>数据说明</span>
           </template>
           <el-menu-item index="3">变量说明</el-menu-item>
           <el-menu-item index="4.1">数据展示</el-menu-item>
-        </el-submenu> 
+        </el-submenu>
         <el-menu-item index="5">與情热力图</el-menu-item>
-         <el-menu-item index="6">固定效应模拟</el-menu-item>
+        <el-menu-item index="6">固定效应模拟</el-menu-item>
       </el-submenu>
-
-      
     </el-menu>
 
     <div class="main">
@@ -152,12 +153,23 @@ export default {
       this.show_right_btn = false;
     },
   },
+  mounted: function(){
+    let serachBox = document.getElementById('noop');
+    console.log('serachBox: ', serachBox);
+  }
 };
 </script>
 
 <style>
+body{
+  margin: 0;
+  background-color: #f4f6fa;
+}
+object{
+  display: none;
+}
 .container {
-  height: 100%;
+
   margin: 0px;
   box-sizing: border-box;
 }
@@ -180,23 +192,21 @@ export default {
 }
 
 .el-menu-vertical-demo {
-  top: 10vh;
-  min-height: 100vh;
-  position: flex;
-  float: left;
+  /* top: 10vh; */
+  /* min-height: 100vh; */
+min-height: 100vh;
 }
 
-#v-content {
-  position: flex;
-  float: right;
-}
 .main {
   width: 100%;
-  margin-top: 4vh;
+  /* margin-top: 4vh; */
 }
 
 .demonstration {
   padding-top: 5px;
   color: white;
+}
+.left-menu{
+  height: 100vh;
 }
 </style>
