@@ -163,7 +163,7 @@ export default {
 <style>
 body{
   margin: 0;
-  background-color: #f4f6fa;
+  /* background-color: #f4f6fa; */
 }
 object{
   display: none;
@@ -195,6 +195,7 @@ object{
   /* top: 10vh; */
   /* min-height: 100vh; */
 min-height: 100vh;
+width: 16vw;
 }
 
 .main {

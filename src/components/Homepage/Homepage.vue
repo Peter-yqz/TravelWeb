@@ -6,6 +6,7 @@
           <h1 class="title-c">南开大学旅游舆情大数据分析平台</h1>
           <img class="cover-img" src="../../assets/cover.png" alt="cover"/>
         </div>
+        <div class="main-container">
         <h2>项目简介</h2>
         <p>
           党的十九大报告强调“数字中国建设成为我国未来蓝图的重要组成部分,已上升为国家战略”。
@@ -55,6 +56,7 @@
             <el-button>舆情地图</el-button>
           </router-link>
         </div>
+        </div>
       </div>
     </div>
   </el-container>
@@ -64,7 +66,7 @@
 <style scoped>
 .second-container {
   box-sizing: border-box;
-  margin-left: 3vh;
+  /* margin-left: 3vh; */
   text-align: justify;
 }
 .second-container h1 {
@@ -83,6 +85,10 @@
   /* line-height:150%; */
   /* color: white; */
 }
+.main-container{
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
+}
 .el-button {
   margin: 2vh;
 }
@@ -90,9 +96,10 @@
   display: flex;
   align-content: center;
   justify-content: space-between;
-  margin-right: 120px;
-  margin-top: 30px;
+  padding-right: 120px;
+  /* padding-top: 30px; */
   align-items: center;
+  background-color: #f7f7fb;
 }
 .title-c{
     display: inline;

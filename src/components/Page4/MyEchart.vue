@@ -22,7 +22,7 @@ export default {
       symbolSize: 10, // 通过拖动是可以实时改变这里的值的
       dom: null,
       timer: 0,
-      originalData: []
+      originalData: [],
     };
   },
   watch: {
@@ -84,10 +84,20 @@ export default {
                   "grid",
                   this.position
                 );
-                that.$emit("activeChange", that.charYdata[dataIndex][0],(that.charYdata[dataIndex][1] - that.originalData[that.charYdata[dataIndex][0]][1]));
-                console.log(': ', that.charYdata[dataIndex][0],(that.charYdata[dataIndex][1] - that.originalData[that.charYdata[dataIndex][0]][1])/that.originalData[that.charYdata[dataIndex][0]][1]);
-                
-                
+                that.$emit(
+                  "activeChange",
+                  that.charYdata[dataIndex][0],
+                  that.charYdata[dataIndex][1] -
+                    that.originalData[that.charYdata[dataIndex][0]][1]
+                );
+                console.log(
+                  ": ",
+                  that.charYdata[dataIndex][0],
+                  (that.charYdata[dataIndex][1] -
+                    that.originalData[that.charYdata[dataIndex][0]][1]) /
+                    that.originalData[that.charYdata[dataIndex][0]][1]
+                );
+
                 that.dom.setOption({
                   series: [
                     {
@@ -109,10 +119,9 @@ export default {
     initExample() {
       const chart1 = this.$refs.chart2;
       this.dom = this.$echarts.init(chart1);
-      
-      
-      this.originalData = this.charYdata.slice()
-      
+
+      this.originalData = this.charYdata.slice();
+
       this.dom.setOption({
         title: {
           text: this.chartTitle,
@@ -126,6 +135,7 @@ export default {
         tooltip: {
           trigger: "axis",
         },
+        // backgroundColor: "#f7f7fb",
         xAxis: {
           type: "category",
           axisLabel: {
