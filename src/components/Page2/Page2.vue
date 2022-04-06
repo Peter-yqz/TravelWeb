@@ -1,4 +1,5 @@
 <template>
+<div>
   <div>
     <div class="top-img-container">
       <img class="first-equation" src="../../assets/tour.png" alt="公式" />
@@ -27,14 +28,13 @@
         @activeChange="changeLocation"
       ></timeLine>
     </div>
-    <!-- <el-row> -->
-  
+  </div>
   <div class="chart-container">
     <div ref="chart" class="chart" ></div>
     <div ref="chart1" class="chart" ></div>
     <div ref="chart2" class="chart" ></div>
   </div>
-  </div>
+</div>
 </template>
 <script>
 import timeLine from "../Page3/timeLine.vue";
