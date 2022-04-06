@@ -153,23 +153,22 @@ export default {
       this.show_right_btn = false;
     },
   },
-  mounted: function(){
-    let serachBox = document.getElementById('noop');
-    console.log('serachBox: ', serachBox);
-  }
+  mounted: function () {
+    let serachBox = document.getElementById("noop");
+    console.log("serachBox: ", serachBox);
+  },
 };
 </script>
 
 <style>
-body{
+body {
   margin: 0;
   /* background-color: #f4f6fa; */
 }
-object{
+object {
   display: none;
 }
 .container {
-
   margin: 0px;
   box-sizing: border-box;
 }
@@ -194,8 +193,16 @@ object{
 .el-menu-vertical-demo {
   /* top: 10vh; */
   /* min-height: 100vh; */
-min-height: 100vh;
-width: 16vw;
+  min-height: 100vh;
+  width: 16vw;
+  min-width: 200px;
+}
+
+.el-menu-vertical-demo  .el-submenu__title {
+  font-size: 16px;
+}
+.el-menu-vertical-demo  .el-menu-item {
+  font-size: 16px;
 }
 
 .main {
@@ -207,7 +214,7 @@ width: 16vw;
   padding-top: 5px;
   color: white;
 }
-.left-menu{
+.left-menu {
   height: 100vh;
 }
 </style>
