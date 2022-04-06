@@ -388,8 +388,8 @@ export default {
 .select {
   position: relative;
   display: inline;
-  left: 50px;
-  top: 80px;
+
+  top: 30px;
   z-index: 1000;
 }
 .allContent {
