@@ -385,7 +385,7 @@ export default {
 .select {
   position: relative;
   left: 50px;
-  top: 70px;
+  top: 80px;
 }
 .allContent {
   display: flex;
@@ -397,14 +397,14 @@ export default {
 }
 .title {
 
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
 }
 .first-equation {
-  width: 40%;
+  width: 35%;
 }
 .second-equation {
-  width: 35%;
+  width: 30%;
 }
 
 .eTitle {
@@ -424,7 +424,7 @@ export default {
 }
 .chart{
   width: 1200px;
-  height: 500px;
+  height: 30vh;
   margin-top: 50px;
 }
 .chart-container{

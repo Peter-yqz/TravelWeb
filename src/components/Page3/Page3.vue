@@ -325,6 +325,6 @@ export default {
 
 }
 .time-picker{
-  width: 80vw;
+  width: 75vw;
 }
 </style>

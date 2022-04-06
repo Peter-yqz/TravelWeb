@@ -525,8 +525,8 @@ export default {
   margin-top: -50px;
 }
 .chart {
-  width: 1200px;
-  height: 400px;
+   width: 70vw;
+  height: 35vh;
 }
 .allContent {
   display: flex;
@@ -578,8 +578,8 @@ export default {
 }
 
 .left-chart {
-  width: 800px;
-  height: 300px;
+  width: 40vw;
+  height: 27vh;
 }
 .left-chart-container {
   width: 100%;
@@ -589,8 +589,8 @@ export default {
   align-items: center;
 }
 .right-chart {
-  width: 800px;
-  height: 450px;
+  width: 40vw;
+  height: 30vh;
 }
 .right-chart-container {
   width: 100%;
