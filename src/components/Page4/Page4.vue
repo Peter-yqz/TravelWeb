@@ -122,8 +122,8 @@ export default {
       correctData: [],
       currentModel: "number",
       modelMap: {
-        number: "旅游人数（单位：万人次）",
-        income: "旅游收入（单位：亿元）",
+        number: "广西壮族自治区旅游人数（单位：万人次）",
+        income: "广西壮族自治区旅游收入（单位：亿元）",
       },
       chart1GDP: [1820, 932, 1901, 934, 290, 130, 320],
       chart1IP: [1820, 932, 1901, 934, 290, 130, 320],
