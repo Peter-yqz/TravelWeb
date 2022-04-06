@@ -1,6 +1,6 @@
 <template>
   <!--时间线-->
-  <div style="display: flex">
+  <div style="display: flex" class="timer-container">
     <!-- 当日志记录不超过9个，全排列 -->
     <div class="container" v-if="timeLineList.length < 12">
       <div style="display: flex">
@@ -212,13 +212,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="css" scoped>
 .container {
   width: 80%;
   height: 40px;
   margin-left: 0px;
   padding-left: 0px;
   margin-bottom: 5px;
+  
 }
 .dot {
   border: 2px solid #dcdfe6;
@@ -254,5 +255,11 @@ export default {
 .active {
   background-color: #fff !important;
   border: 2px solid #67c23a;
+}
+.timer-container{
+     display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 </style>

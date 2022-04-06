@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div ref="chart2" style="width: 100%; height: 40vh"></div>
+    <div ref="chart2" style="width: 100%; height: 100%"></div>
     <!-- :timeLineList="timeLineList"
         @activeChange="changeDate" -->
   </div>
@@ -15,7 +15,7 @@ export default {
     "chartSubtext",
     "chartYname",
     "chartColor",
-    "xName"
+    "xName",
   ],
   data() {
     return {
@@ -169,5 +169,5 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="css" scoped>
 </style>

@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div class="equation">
-      <img class="equation-img" src="../../assets/tour.png" alt="公式" />
+    <div class="top-img-container">
+      <img class="first-equation" src="../../assets/tour.png" alt="公式" />
+
+      <img :src="currentImg" class="second-equation" alt="公式" />
     </div>
+
     <div class="select">
       <el-dropdown @command="handleCommand">
         <el-button type="primary">
@@ -13,21 +16,11 @@
           <el-dropdown-item command="income">国内旅游收入</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      
     </div>
     
     <div class="allContent">
-      
-      <div class="equation">
-        <br />
-    <br />
-      <img :src="currentImg" class="equation-img" alt="公式" />
-      </div>
-      <br/>
-      <span class="title">{{ this.modelMap[this.currentModel] }}</span>
-      
+      <div class="title">{{ this.modelMap[this.currentModel] }}</div>
       <br />
-    <br />
       <timeLine
         class="topPanel"
         :timeLineList="timeLineList"
@@ -35,17 +28,12 @@
       ></timeLine>
     </div>
     <!-- <el-row> -->
-    <br />
-    <br />
-    <div ref="chart" class="chart" style="width: 90%; height: 40vh"></div>
-    <br />
-    <br />
-    <div ref="chart1" class="chart1" style="width: 90%; height: 40vh"></div>
-    <div ref="chart2" style="width: 90%; height: 40vh"></div>
-    <!-- </el-row> -->
-    <!-- <el-row> -->
-    <!-- <div ref="chart1" style="width: 90%; height: 40vh"></div> -->
-    <!-- </el-row> -->
+  
+  <div class="chart-container">
+    <div ref="chart" class="chart" ></div>
+    <div ref="chart1" class="chart" ></div>
+    <div ref="chart2" class="chart" ></div>
+  </div>
   </div>
 </template>
 <script>
@@ -393,39 +381,57 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="css" scoped>
 .select {
-  display: inline-flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
-  height: 90px;
-  margin-left: 20px;
+  position: relative;
+  left: 50px;
+  top: 70px;
 }
 .allContent {
   display: flex;
   align-content: center;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
+  /* width: 100vw; */
 }
 .title {
-  display: inline-block;
-  margin-left: 30vw;
+
   font-size: 22px;
   font-weight: bold;
 }
-.equation {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  width: 60vw;
+.first-equation {
+  width: 40%;
 }
-.equation-img {
-  width: 44%;
+.second-equation {
+  width: 35%;
 }
+
 .eTitle {
   margin-left: 20px;
 }
-.formular-img{
-  width: 44%;
+
+.top-img-container {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.topPanel {
+  width: 80vw;
+  z-index: 100;
+}
+.chart{
+  width: 1200px;
+  height: 500px;
+  margin-top: 50px;
+}
+.chart-container{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 </style>

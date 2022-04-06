@@ -1,51 +1,64 @@
 <template>
   <div>
-    <el-dropdown @command="handleCommand">
-      <el-button type="primary">
-        选择模型<i class="el-icon-arrow-down el-icon--right"></i>
-      </el-button>
-      <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item command="number">旅游人数</el-dropdown-item>
-        <el-dropdown-item command="income">旅游收入</el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
-    <div class="select">
-      <span class="title">{{ this.modelMap[this.currentModel] }}</span>
+    <div class="top-model">
+      <div class="top-select">
+        <el-dropdown @command="handleCommand">
+          <el-button type="primary">
+            选择模型<i class="el-icon-arrow-down el-icon--right"></i>
+          </el-button>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="number">旅游人数</el-dropdown-item>
+            <el-dropdown-item command="income">旅游收入</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
+      <div class="select">
+        <span>{{ this.modelMap[this.currentModel] }}</span>
+      </div>
+      <div class="chart-container">
+        <div ref="chart" class="chart"></div>
+      </div>
     </div>
-    <br />
-    <br />
-    <div ref="chart" class="chart" style="width: 90%; height: 40vh"></div>
     <br />
     <br />
     <div class="adjust-container">
       <div class="left-container">
-        <my-echart
-          :charData="charData"
-          :charYdata="chart1GDP"
-          :chartTitle="GDPTitle"
-          chartSubtext="鼠标拖动数据变化"
-          chartYname="单位:亿元"
-          chartColor="#3b83d1"
-          @activeChange="changeGDP"
-        ></my-echart>
-        <my-echart
-          :charData="charData"
-          :charYdata="chart1CPI"
-          :chartTitle="CPITitle"
-          chartSubtext="鼠标拖动数据变化"
-          chartColor="#489f5a"
-          chartYname="单位:%"
-          @activeChange="changeCPI"
-        ></my-echart>
-        <my-echart
-          :charData="charData"
-          :charYdata="chart1IP"
-          :chartTitle="IPTitle"
-          chartSubtext="鼠标拖动数据变化"
-          chartYname="单位:%"
-          chartColor="#e9867f"
-          @activeChange="changeIP"
-        ></my-echart>
+        <div class="left-chart-container">
+          <my-echart
+            class="left-chart"
+            :charData="charData"
+            :charYdata="chart1GDP"
+            :chartTitle="GDPTitle"
+            chartSubtext="鼠标拖动数据变化"
+            chartYname="单位:亿元"
+            chartColor="#3b83d1"
+            @activeChange="changeGDP"
+          ></my-echart>
+        </div>
+        <div class="left-chart-container">
+          <my-echart
+            class="left-chart"
+            :charData="charData"
+            :charYdata="chart1CPI"
+            :chartTitle="CPITitle"
+            chartSubtext="鼠标拖动数据变化"
+            chartColor="#489f5a"
+            chartYname="单位:%"
+            @activeChange="changeCPI"
+          ></my-echart>
+        </div>
+        <div class="left-chart-container">
+          <my-echart
+            class="left-chart"
+            :charData="charData"
+            :charYdata="chart1IP"
+            :chartTitle="IPTitle"
+            chartSubtext="鼠标拖动数据变化"
+            chartYname="单位:%"
+            chartColor="#e9867f"
+            @activeChange="changeIP"
+          ></my-echart>
+        </div>
       </div>
 
       <div class="right-container">
@@ -71,16 +84,19 @@
 
         <br />
         <br />
-        <my-echart
-          :charData="charData"
-          :charYdata="argData"
-          :chartTitle="ArgTitle"
-          :xName="xName"
-          chartSubtext="鼠标拖动数据变化"
-          chartYname="单位:个"
-          chartColor="#7d1784"
-          @activeChange="changeArgData"
-        ></my-echart>
+        <div class="right-chart-container">
+          <my-echart
+            :charData="charData"
+            :charYdata="argData"
+            :chartTitle="ArgTitle"
+            :xName="xName"
+            chartSubtext="鼠标拖动数据变化"
+            chartYname="单位:个"
+            chartColor="#7d1784"
+            class="right-chart"
+            @activeChange="changeArgData"
+          ></my-echart>
+        </div>
         <div class="arg-title-container">
           <!-- <span class="arg-title">{{
             argTitleTable[currentModel][currentArg]
@@ -212,7 +228,6 @@ export default {
       currentImg: {},
       argTitleTable: {
         income: {
-          
           RN: "7.png",
           CN: "8.png",
           PN: "9.png",
@@ -409,9 +424,8 @@ export default {
         this.argMap[this.currentArg] +
         " 回归因子: " +
         this.argTable[this.currentModel]["SelectArgMap"][this.currentArg];
-      this.currentImg = require( "../../assets/" + this.argTitleTable[this.currentModel][
-        this.currentArg
-      ]);
+      this.currentImg = require("../../assets/" +
+        this.argTitleTable[this.currentModel][this.currentArg]);
     },
     handleCommand(command) {
       this.currentModel = command;
@@ -502,34 +516,47 @@ export default {
   },
 };
 </script>
-<style>
-.select {
-  display: inline-flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
-  height: 90px;
-  margin-left: 20px;
+<style lang="css" scoped>
+.top-model {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: -50px;
+}
+.chart {
+  width: 1200px;
+  height: 400px;
 }
 .allContent {
   display: flex;
   align-content: center;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
-.title {
-  display: inline-block;
-  margin-left: 30vw;
-  font-size: 22px;
-  font-weight: bold;
+.chart-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.top-select {
+  position: relative;
+  top: 50px;
+  left: 30px;
+}
+.select {
+  font-size: 20px;
+  height: 60px;
+  display: inline-flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
 }
 
-.eTitle {
-  margin-left: 20px;
-}
-.equation-img {
-  display: block;
-  width: 80%;
-}
 .adjust-container {
   display: flex;
   flex-direction: row;
@@ -542,11 +569,30 @@ export default {
   display: inline-block;
   width: 50%;
 }
-.arg-title {
-  margin-top: -50px;
-  font-size: 20px;
-}
 .arg-title-container {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-chart {
+  width: 800px;
+  height: 300px;
+}
+.left-chart-container {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.right-chart {
+  width: 800px;
+  height: 450px;
+}
+.right-chart-container {
   width: 100%;
   display: flex;
   align-content: center;

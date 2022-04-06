@@ -3,6 +3,7 @@
     <div class="picker">
       <!-- <div style="flex: 1">选择时间：</div> -->
       <timeLine
+      class="time-picker"
         :timeLineList="timeLineList"
         @activeChange="changeDate"
       ></timeLine>
@@ -19,6 +20,7 @@
 import * as echarts from "echarts";
 import { BmlHeatmap } from "vue-baidu-map";
 import timeLine from "./timeLine.vue";
+import "../../assets/china"
 export default {
   name: "ChinaMap",
   components: {
@@ -306,15 +308,23 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="css" scoped>
 .map {
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 .picker {
   z-index: 100;
   height: 60px;
   margin-top: 20px;
-  width: 100vw;
+  width: 100%;
+   display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+}
+.time-picker{
+  width: 80vw;
 }
 </style>
